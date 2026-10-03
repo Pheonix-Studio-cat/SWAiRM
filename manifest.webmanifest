@@ -1,0 +1,13 @@
+{
+  "name": "SWAiRM",
+  "short_name": "SWAiRM",
+  "description": "Build the right AI team for every task.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0c11",
+  "theme_color": "#0a0c11",
+  "icons": [
+    { "src": "assets/logo.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
