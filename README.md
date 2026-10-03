@@ -29,7 +29,7 @@ Reviewer who assembles the final result.
 SWAiRM is a static web app with **no build step and no dependencies**. It runs
 entirely in your browser — there is no SWAiRM server.
 
-- **Online:** GitHub Pages (see *Deploy* below).
+- **Online:** Cloudflare Pages (see *Deploy* below).
 - **Locally:** serve the folder with any static server, e.g.
   `python3 -m http.server`, and open `http://localhost:8000`.
   (Opening `index.html` as a file does not work — browsers block ES modules
@@ -69,8 +69,7 @@ key at the provider and paste it in *API Connections*.
   never passed to agents: agents talk to the Model Gateway, and only the
   gateway reads the key.
 - By default a key is **forgotten when you close the tab**. “Remember on this
-  device” is an explicit opt-in — note that all GitHub Pages sites of one
-  account share browser storage.
+  device” is an explicit opt-in.
 - A strict Content Security Policy allows scripts only from this site and
   network calls only to the supported providers.
 
@@ -113,11 +112,21 @@ No dependencies. The tests cover analysis, team composition, model selection,
 the workflow graph, and a full swarm against a fake OpenRouter — including
 that keys never reach a request body, a run record or an error message.
 
-## Deploy
+## Deploy (Cloudflare Pages)
 
-1. Merge to `main`.
-2. Once: *Settings → Pages → Source → **GitHub Actions***.
-3. The *Deploy to GitHub Pages* workflow tests and publishes the site.
+Set up once in the Cloudflare dashboard:
+
+1. **Workers & Pages → Create application → Pages → Import an existing Git
+   repository**, choose `SWAiRM`, **Begin setup**.
+2. Project name `swairm` (becomes `swairm.pages.dev`), production branch `main`.
+3. Framework preset **None**, build command `sh build.sh`, build output
+   directory `dist`.
+4. **Save and Deploy**.
+
+After that every merge to `main` deploys automatically, and every pull request
+gets its own preview address. `build.sh` runs the tests first — a failing test
+stops the deploy and the previous version stays online. Security headers
+(CSP, no framing, no referrer) come from `_headers`.
 
 ## License
 
