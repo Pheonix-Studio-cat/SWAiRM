@@ -113,7 +113,7 @@ export function connectForm(ctx, providerId, { onDone = () => {}, compact = fals
     h('option', { value: 'memory', selected: ctx.store.get().settings.keyPersistence === 'memory' }, 'Forget on reload'),
     h('option', { value: 'device', selected: ctx.store.get().settings.keyPersistence === 'device' }, 'Remember on this device'));
   const warn = h('p', { class: 'hint warn-text', hidden: persistence.value !== 'device' },
-    '“Remember on this device” keeps the key in this browser’s storage until you disconnect. Every GitHub Pages site of the same account shares that storage — only use it on a device you trust.');
+    '“Remember on this device” keeps the key in this browser’s storage until you disconnect. Anyone with access to this browser profile could use it — only choose this on a device you trust.');
   persistence.addEventListener('change', () => { warn.hidden = persistence.value !== 'device'; });
   const btn = h('button', { class: 'btn btn-primary', type: 'submit' }, 'Connect');
   const form = h('form', { class: ['connect-form', compact && 'compact'], autocomplete: 'off' },

@@ -8,9 +8,11 @@
 //   - keys are not stored more than necessary: by default only for this tab
 //     (sessionStorage), on this device only if the user opts in (localStorage)
 //
-// Note on GitHub Pages: every Pages site of one account shares the origin
-// <account>.github.io, and with it localStorage. "Remember on this device" is
-// therefore an explicit opt-in with a warning, never the default.
+// A key kept in localStorage survives until it is removed, and anything that
+// ever runs on this origin could read it. "Remember on this device" is
+// therefore an explicit opt-in with a warning, never the default. (Hosting on
+// an own origin — swairm.pages.dev — keeps other sites out; the strict CSP
+// keeps foreign scripts out.)
 
 const PREFIX = 'swairm.key.';
 const STATUS_KEY = 'swairm.keyStatus';
