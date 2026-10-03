@@ -59,7 +59,7 @@ export function dashboardView(ctx) {
         h('p', { class: 'eyebrow' }, '🐝 AI swarm orchestration'),
         h('h1', {}, 'Build the right AI team ', h('span', { class: 'accent' }, 'for every task.')),
         h('p', { class: 'lead' }, 'Describe what you want done. SWAiRM works out which agents the task needs, proposes teams of models for them, and runs the swarm with your own API keys.')),
-      h('div', { class: 'hero-art', 'aria-hidden': 'true' }, h('img', { src: 'assets/swarm.svg', alt: '' }))),
+      h('div', { class: 'hero-art' }, h('img', { src: 'assets/swairm-logo.webp', alt: 'SWAiRM logo', width: 360, height: 360 }))),
 
     !connected.length ? h('div', { class: 'callout' },
       h('div', {}, h('strong', {}, 'No API connected yet. '),
